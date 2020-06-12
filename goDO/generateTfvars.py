@@ -3,6 +3,7 @@ import os
 do_token = input('Enter digital ocean token file location: ')
 # eg. do_token = "~/.ssh/foo"
 ssh_key = input('Enter ssh key name: ')
+repo = input('Enter git repo: ')
 
 
 # grabs do_token value from file and will append to tfvars file
@@ -17,5 +18,6 @@ with open(filename, 'w') as output:
     output.write(f'do_token = "{token_val}"\n')
     output.write(f'ssh_pubkey = "{ssh_key}.pub"\n')
     output.write(f'ssh_privkey = "{ssh_key}"\n')
+    output.write(f'repo = "{repo}"\n')
 
 print("terraform.tfvars file has been created")

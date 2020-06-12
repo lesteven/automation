@@ -13,7 +13,14 @@ resource "digitalocean_droplet" "server" {
   name = "server"
   region = "sfo2"
   size = "s-1vcpu-1gb"
+  ipv6 = true
   ssh_keys = ["${digitalocean_ssh_key.ssh_key.fingerprint}"]
+
+  provisioner "remote-exec" {
+    inline = [
+      "git clone ${var.repo}"
+    ]
+  }
 
   connection {
     type = "ssh"
