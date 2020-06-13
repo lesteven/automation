@@ -16,9 +16,20 @@ resource "digitalocean_droplet" "server" {
   ipv6 = true
   ssh_keys = ["${digitalocean_ssh_key.ssh_key.fingerprint}"]
 
+  provisioner "local-exec" {
+    command = "echo ${digitalocean_droplet.server.ipv4_address} > ./scripts/ip.txt"
+  }
+
+  provisioner "file" {
+    source = "./scripts"
+    destination = "./"
+  }
+
   provisioner "remote-exec" {
     inline = [
-      "git clone ${var.repo}"
+      "git clone ${var.repo}",
+      "chmod +x ./scripts/createSite.sh",
+      "sudo ./scripts/createSite.sh",
     ]
   }
 
