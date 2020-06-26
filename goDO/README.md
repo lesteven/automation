@@ -1,4 +1,4 @@
-Digital Ocean Automation for Go Server
+# Digital Ocean Automation for Go Server
 
 Steps:
 
