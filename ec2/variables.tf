@@ -14,6 +14,6 @@ variable "key_name" {}
 
 variable "ami" {
   default = {
-    us-west-1 = "ami-063aa838bd7631e0b"
+    us-west-1 = "ami-0d705db840ec5f0c5"
   }
 }
